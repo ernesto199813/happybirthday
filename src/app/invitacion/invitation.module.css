@@ -1,0 +1,692 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Bungee&family=Inter:wght@400;700&display=swap');
+
+/* ═══════════════════════════════════════════
+   🎀 PALETA BOO — Rosa + Morado
+   Rosa vestido:  #e8728c  / #d4657a
+   Morado medias: #a87dbf  / #9b6ab0
+   Acento cálido: #ff8c00
+   Verde Mike:    #32cd32
+═══════════════════════════════════════════ */
+
+/* ── Base ─────────────────────────────────── */
+.page {
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(160deg, #e8728c 0%, #c44d7b 45%, #9b6ab0 100%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  /* 1rem padding on mobile so nothing ever touches the edge */
+  padding: 0 1rem 4rem;
+  box-sizing: border-box;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Dot texture overlay */
+.page::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.14) 1.5px, transparent 0);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dotOverlay {
+  display: none;
+  /* handled by page::before now */
+}
+
+.monsterSpots {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(#d4b3e8 20%, transparent 20%),
+    radial-gradient(#d4b3e8 20%, transparent 20%);
+  background-position: 0 0, 50px 50px;
+  background-size: 100px 100px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Garland ──────────────────────────────── */
+.garland {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0.5rem 0 0;
+  width: 100%;
+}
+
+.flag {
+  width: 28px;
+  height: 38px;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+/* ── Hero ─────────────────────────────────── */
+.hero {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 1rem 0 0;
+  display: flex;
+  justify-content: center;
+  /* Allow Boo to overflow below the hero section */
+  overflow: visible;
+}
+
+.heroBox {
+  background: #fff0f6;
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  border: 4px solid #a87dbf;
+  padding: 0.85rem 1rem 0.5rem;
+  overflow: visible;
+  box-shadow: 0 8px 30px rgba(155, 106, 176, 0.25);
+  animation: wiggle 3s ease-in-out infinite;
+  /* Fills the page padding-box, capped at a comfortable max */
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0.25rem;
+  box-sizing: border-box;
+}
+
+.heroLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+.heroSub {
+  font-family: 'Bungee', sans-serif;
+  font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+  color: #7c3d5c;
+  letter-spacing: 0.04em;
+  margin: 0;
+  text-align: center;
+}
+
+.heroName {
+  font-family: 'Fredoka One', cursive;
+  /* Larger minimum on mobile for better visibility */
+  font-size: clamp(1.9rem, 6.5vw, 2.8rem);
+  color: #d4657a;
+  text-shadow: 2px 2px 0 #a87dbf;
+  margin: 0;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.ageLine {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-top: 0.3rem;
+}
+
+.ageNumber {
+  font-family: 'Bungee', sans-serif;
+  /* Big and bold on all screens */
+  font-size: clamp(2.8rem, 10vw, 4.2rem);
+  color: #d4657a;
+  line-height: 1;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.ageText {
+  font-family: 'Bungee', sans-serif;
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  color: #ff8c00;
+}
+
+/* ── Monsters row: Sulley | Photo | Mike ─── */
+.monstersRow {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: flex-end;
+  min-height: clamp(160px, 42vw, 260px);
+  margin: 0.25rem auto 0.5rem;
+  box-sizing: border-box;
+}
+
+.sulleyWrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.sulleyImg {
+  /* Bigger on mobile for impact */
+  width: clamp(110px, 30vw, 165px);
+  height: auto;
+  filter: drop-shadow(4px 6px 10px rgba(0, 0, 0, 0.35));
+  object-fit: contain;
+}
+
+.mikeWrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.mikeImg {
+  width: clamp(88px, 22vw, 125px);
+  height: auto;
+  filter: drop-shadow(3px 5px 8px rgba(0, 0, 0, 0.3));
+  object-fit: contain;
+}
+
+/* Photo — center of the row */
+.photoCenter {
+  position: relative;
+  width: clamp(140px, 36vw, 200px);
+  height: clamp(140px, 36vw, 200px);
+  border-radius: 50%;
+  border: 7px solid white;
+  box-shadow: 0 8px 32px rgba(155, 106, 176, 0.5);
+  overflow: hidden;
+  background: linear-gradient(135deg, #fde8f0, #e8d0f5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-bottom: 4px;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photoEmoji {
+  font-size: clamp(2.5rem, 9vw, 4.5rem);
+}
+
+/* Animated dashed ring */
+.photoBorder {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 4px dashed rgba(168, 125, 191, 0.7);
+  animation: spin 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Boo in the Hero box ────────────────────── */
+.booHero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-shrink: 0;
+  /* Reduced negative margin so Boo sits a bit higher in the card */
+  margin-bottom: 0.25rem;
+  padding-bottom: 0;
+}
+
+.booHeroImg {
+  /* Bigger Boo on all screen sizes */
+  width: clamp(90px, 22vw, 130px);
+  height: auto;
+  filter: drop-shadow(2px 4px 8px rgba(0, 0, 0, 0.2));
+  object-fit: contain;
+}
+
+/* ── Canister (countdown) ─────────────────── */
+.canister {
+  position: relative;
+  z-index: 2;
+  /* Same pattern as all cards: full width inside page padding, capped at max */
+  width: 100%;
+  max-width: 480px;
+  margin: 1rem auto 1rem;
+  background: linear-gradient(180deg, #f9a8d4 0%, #d4657a 100%);
+  border: 4px solid #7c3d5c;
+  border-radius: 20px;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 8px 24px rgba(155, 106, 176, 0.35);
+  box-sizing: border-box;
+}
+
+.canisterHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.statusText {
+  font-family: 'Bungee', sans-serif;
+  font-size: 0.65rem;
+  color: #7c3d5c;
+}
+
+.statusDots {
+  display: flex;
+  gap: 4px;
+}
+
+.dotRed {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #dc2626;
+  animation: blink 1s infinite;
+}
+
+.dotYellow {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fbbf24;
+}
+
+.dotGreen {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.canisterTitle {
+  font-family: 'Bungee', sans-serif;
+  color: white;
+  font-size: clamp(1rem, 4vw, 1.35rem);
+  text-align: center;
+  margin: 0 0 0.75rem;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+.countdownGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.countdownCell {
+  background: #5c1a3a;
+  border-radius: 10px;
+  padding: 0.5rem 0.25rem;
+  text-align: center;
+  border-bottom: 4px solid rgba(0, 0, 0, 0.25);
+}
+
+.countdownNum {
+  font-family: 'Bungee', sans-serif;
+  font-size: clamp(1.5rem, 6vw, 2.2rem);
+  color: white;
+  line-height: 1;
+}
+
+.countdownLbl {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #f9c8da;
+  margin-top: 2px;
+}
+
+/* ── Detail card ──────────────────────────── */
+.card {
+  position: relative;
+  z-index: 2;
+  background: #fff5f9;
+  border-radius: 24px;
+  padding: clamp(1rem, 4vw, 1.75rem);
+  /* Unified: full width inside page padding */
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 1rem;
+  box-shadow: 0 6px 24px rgba(155, 106, 176, 0.15);
+  border-left: 8px solid #a87dbf;
+  box-sizing: border-box;
+}
+
+.detailRow {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.detailIcon {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.detailTitle {
+  font-family: 'Bungee', sans-serif;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  margin: 0 0 0.25rem;
+}
+
+.detailMain {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  color: #374151;
+  margin: 0;
+}
+
+.detailSub {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #6b7280;
+  margin: 0;
+}
+
+.detailAddress {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0.25rem 0 0.5rem;
+  line-height: 1.5;
+}
+
+.divider {
+  border: none;
+  border-top: 2px dashed #f3bfcf;
+  margin: 1rem 0;
+}
+
+.mapBtn {
+  display: inline-block;
+  background: #fce7ef;
+  border: 2px dashed #d4657a;
+  color: #7c3d5c;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  transition: background .15s;
+}
+
+.mapBtn:hover {
+  background: #f9c8d8;
+}
+
+/* ── RSVP ─────────────────────────────────── */
+.rsvpWrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0 1rem;
+  box-sizing: border-box;
+}
+
+.rsvpBtn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #32cd32, #1fa81f);
+  color: white;
+  text-decoration: none;
+  font-family: 'Bungee', sans-serif;
+  font-size: clamp(0.95rem, 3.5vw, 1.25rem);
+  /* Scales vertically on small screens, generous on big screens */
+  padding: clamp(0.85rem, 3vw, 1.2rem) clamp(1rem, 5vw, 2rem);
+  border-radius: 20px;
+  box-shadow: 0 6px 0 #15803d, 0 10px 24px rgba(50, 205, 50, 0.3);
+  transition: transform 0.1s, box-shadow 0.1s;
+  letter-spacing: 0.06em;
+  box-sizing: border-box;
+  /* Pulse to draw attention */
+  animation: rsvpPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes rsvpPulse {
+  0%, 100% { box-shadow: 0 6px 0 #15803d, 0 10px 24px rgba(50, 205, 50, 0.3); }
+  50%       { box-shadow: 0 6px 0 #15803d, 0 14px 32px rgba(50, 205, 50, 0.55); }
+}
+
+.rsvpBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 #15803d, 0 16px 32px rgba(50, 205, 50, 0.4);
+  animation: none;
+}
+
+.rsvpBtn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #15803d;
+  animation: none;
+}
+
+.rsvpMsg {
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
+  margin: 0;
+}
+
+/* ── Footer ───────────────────────────────── */
+.footer {
+  position: relative;
+  z-index: 2;
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+  margin-top: 2rem;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ── RSVP Modal ───────────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+.modalContent {
+  background: #fff5f9;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 28px;
+  padding: 2rem;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  border: 4px solid #a87dbf;
+  animation: modalSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.modalClose {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #a87dbf;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modalTitle {
+  font-family: 'Bungee', sans-serif;
+  color: #d4657a;
+  text-align: center;
+  font-size: 1.5rem;
+  margin: 0 0 1.5rem;
+}
+
+.rsvpForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-family: 'Fredoka One', cursive;
+  font-size: 0.9rem;
+  color: #7c3d5c;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 2px solid #f3bfcf;
+  background: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  border-color: #d4657a;
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submitBtn {
+  background: linear-gradient(135deg, #a87dbf, #9b6ab0);
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 16px;
+  font-family: 'Bungee', sans-serif;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #7c4d9b;
+  transition: transform 0.1s, box-shadow 0.1s;
+  margin-top: 0.5rem;
+}
+
+.submitBtn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #7c4d9b;
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.successMsg {
+  text-align: center;
+  padding: 1rem 0;
+}
+
+.successIcon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: successBounce 1s infinite;
+}
+
+.successMsg h3 {
+  font-family: 'Bungee', sans-serif;
+  color: #32cd32;
+  margin-bottom: 0.5rem;
+}
+
+.successMsg p {
+  color: #6b7280;
+}
+
+.errorText {
+  color: #dc2626;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: -0.5rem;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes successBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
