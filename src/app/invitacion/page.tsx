@@ -17,7 +17,7 @@ const DATA = {
   mapsUrl: 'https://maps.google.com',
   // URL de tu Web App de Google Apps Script (Sigue los pasos que te di)
   scriptUrl: 'https://script.google.com/macros/s/AKfycbxcz-_ZqrwAFZ68Pehm8BD0mC_UUL7bk8HSZZJVTRrFCjhazeN22O2s8OAJX99kLW8WVg/exec',
-  message: '¡No faltes, será un susto muy divertido! 🎈',
+  message: '¡No faltes, será una fiesta muy divertida! 🎈',
   photo: '',
 };
 // ─────────────────────────────────────────────────────────────────────────────

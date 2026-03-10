@@ -16,10 +16,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(160deg, #e8728c 0%, #c44d7b 45%, #9b6ab0 100%);
+  background: url('/gift-bg.png') center/cover no-repeat;
   background-attachment: fixed;
   overflow-x: hidden;
-  /* 1rem padding on mobile so nothing ever touches the edge */
   padding: 0 1rem 4rem;
   box-sizing: border-box;
   position: relative;
@@ -86,13 +85,13 @@
 }
 
 .heroBox {
-  background: #fff0f6;
-  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
   border-radius: 24px;
-  border: 4px solid #a87dbf;
+  border: 3px solid #f9a8d4; /* Soft pink border */
   padding: 0.85rem 1rem 0.5rem;
   overflow: visible;
-  box-shadow: 0 8px 30px rgba(155, 106, 176, 0.25);
+  box-shadow: 0 8px 30px rgba(244, 114, 182, 0.2);
   animation: wiggle 3s ease-in-out infinite;
   /* Fills the page padding-box, capped at a comfortable max */
   width: 100%;
@@ -138,8 +137,8 @@
   font-family: 'Fredoka One', cursive;
   /* Larger minimum on mobile for better visibility */
   font-size: clamp(1.9rem, 6.5vw, 2.8rem);
-  color: #d4657a;
-  text-shadow: 2px 2px 0 #a87dbf;
+  color: #f43f5e; /* Stronger rose color */
+  text-shadow: 2px 2px 0 #fbcfe8; /* Soft pink shadow */
   margin: 0;
   line-height: 1.1;
   text-align: center;
@@ -157,7 +156,7 @@
   font-family: 'Bungee', sans-serif;
   /* Big and bold on all screens */
   font-size: clamp(2.8rem, 10vw, 4.2rem);
-  color: #d4657a;
+  color: #f43f5e; /* Rose */
   line-height: 1;
   text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
 }
@@ -165,7 +164,7 @@
 .ageText {
   font-family: 'Bungee', sans-serif;
   font-size: clamp(1.2rem, 4vw, 1.7rem);
-  color: #ff8c00;
+  color: #f43f5e; /* Rose to match number */
 }
 
 /* ── Monsters row: Sulley | Photo | Mike ─── */
@@ -218,7 +217,7 @@
   border: 7px solid white;
   box-shadow: 0 8px 32px rgba(155, 106, 176, 0.5);
   overflow: hidden;
-  background: linear-gradient(135deg, #fde8f0, #e8d0f5);
+  background: linear-gradient(135deg, #fdf2f8, #fbcfe8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -243,7 +242,7 @@
   position: absolute;
   inset: -6px;
   border-radius: 50%;
-  border: 4px dashed rgba(168, 125, 191, 0.7);
+  border: 4px dashed rgba(244, 114, 182, 0.8); /* Pink dashed ring */
   animation: spin 10s linear infinite;
   pointer-events: none;
 }
@@ -281,11 +280,12 @@
   width: 100%;
   max-width: 480px;
   margin: 1rem auto 1rem;
-  background: linear-gradient(180deg, #f9a8d4 0%, #d4657a 100%);
-  border: 4px solid #7c3d5c;
+  background: linear-gradient(180deg, rgba(253, 164, 175, 0.9) 0%, rgba(244, 114, 182, 0.9) 100%);
+  backdrop-filter: blur(8px);
+  border: 3px solid white;
   border-radius: 20px;
   padding: 1rem 1.25rem;
-  box-shadow: 0 8px 24px rgba(155, 106, 176, 0.35);
+  box-shadow: 0 8px 24px rgba(244, 114, 182, 0.3);
   box-sizing: border-box;
 }
 
@@ -299,7 +299,7 @@
 .statusText {
   font-family: 'Bungee', sans-serif;
   font-size: 0.65rem;
-  color: #7c3d5c;
+  color: white;
 }
 
 .statusDots {
@@ -360,11 +360,11 @@
 }
 
 .countdownCell {
-  background: #5c1a3a;
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   padding: 0.5rem 0.25rem;
   text-align: center;
-  border-bottom: 4px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 4px solid rgba(0, 0, 0, 0.15);
 }
 
 .countdownNum {
@@ -378,7 +378,7 @@
   font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: #f9c8da;
+  color: white;
   margin-top: 2px;
 }
 
@@ -386,16 +386,23 @@
 .card {
   position: relative;
   z-index: 2;
-  background: #fff5f9;
+  background: white;
+  /* Base fallback */
+  background-image: linear-gradient(rgba(255, 245, 249, 0.85), rgba(255, 245, 249, 0.85)), url('/gift-bg.png');
+  background-size: cover;
+  background-position: center;
   border-radius: 24px;
   padding: clamp(1rem, 4vw, 1.75rem);
   /* Unified: full width inside page padding */
   width: 100%;
   max-width: 480px;
   margin: 0 auto 1rem;
-  box-shadow: 0 6px 24px rgba(155, 106, 176, 0.15);
-  border-left: 8px solid #a87dbf;
+  margin: 0 auto 1rem;
+  box-shadow: 0 8px 32px rgba(244, 114, 182, 0.2);
+  border-left: 10px solid #f472b6;
   box-sizing: border-box;
+  overflow: hidden;
+  /* Ensure background stays within corners */
 }
 
 .detailRow {
@@ -418,6 +425,7 @@
 .detailTitle {
   font-family: 'Bungee', sans-serif;
   font-size: clamp(1rem, 4vw, 1.2rem);
+  color: #f43f5e; /* Rose instead of deep purple */
   margin: 0 0 0.25rem;
 }
 
@@ -444,15 +452,15 @@
 
 .divider {
   border: none;
-  border-top: 2px dashed #f3bfcf;
+  border-top: 2px dashed #fbcfe8; /* Soft pink */
   margin: 1rem 0;
 }
 
 .mapBtn {
   display: inline-block;
-  background: #fce7ef;
-  border: 2px dashed #d4657a;
-  color: #7c3d5c;
+  background: white;
+  border: 2px dashed #f472b6;
+  color: #f43f5e;
   text-decoration: none;
   border-radius: 12px;
   padding: 0.4rem 1rem;
@@ -462,7 +470,8 @@
 }
 
 .mapBtn:hover {
-  background: #f9c8d8;
+  background: #fdf2f8;
+  border-color: #f43f5e;
 }
 
 /* ── RSVP ─────────────────────────────────── */
@@ -483,7 +492,7 @@
   display: block;
   width: 100%;
   text-align: center;
-  background: linear-gradient(135deg, #32cd32, #1fa81f);
+  background: linear-gradient(135deg, #f472b6, #ec4899); /* Pink gradient */
   color: white;
   text-decoration: none;
   font-family: 'Bungee', sans-serif;
@@ -491,7 +500,7 @@
   /* Scales vertically on small screens, generous on big screens */
   padding: clamp(0.85rem, 3vw, 1.2rem) clamp(1rem, 5vw, 2rem);
   border-radius: 20px;
-  box-shadow: 0 6px 0 #15803d, 0 10px 24px rgba(50, 205, 50, 0.3);
+  box-shadow: 0 6px 0 #be185d, 0 10px 24px rgba(236, 72, 153, 0.3);
   transition: transform 0.1s, box-shadow 0.1s;
   letter-spacing: 0.06em;
   box-sizing: border-box;
@@ -503,23 +512,23 @@
 
   0%,
   100% {
-    box-shadow: 0 6px 0 #15803d, 0 10px 24px rgba(50, 205, 50, 0.3);
+    box-shadow: 0 6px 0 #be185d, 0 10px 24px rgba(236, 72, 153, 0.3);
   }
 
   50% {
-    box-shadow: 0 6px 0 #15803d, 0 14px 32px rgba(50, 205, 50, 0.55);
+    box-shadow: 0 6px 0 #be185d, 0 14px 32px rgba(236, 72, 153, 0.55);
   }
 }
 
 .rsvpBtn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 9px 0 #15803d, 0 16px 32px rgba(50, 205, 50, 0.4);
+  box-shadow: 0 9px 0 #be185d, 0 16px 32px rgba(236, 72, 153, 0.4);
   animation: none;
 }
 
 .rsvpBtn:active {
   transform: translateY(4px);
-  box-shadow: 0 2px 0 #15803d;
+  box-shadow: 0 2px 0 #be185d;
   animation: none;
 }
 
@@ -558,14 +567,15 @@
 }
 
 .modalContent {
-  background: #fff5f9;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
   width: 100%;
   max-width: 400px;
   border-radius: 28px;
   padding: 2rem;
   position: relative;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  border: 4px solid #a87dbf;
+  border: 4px solid #f9a8d4;
   animation: modalSlideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -576,14 +586,14 @@
   background: none;
   border: none;
   font-size: 2rem;
-  color: #a87dbf;
+  color: #f43f5e;
   cursor: pointer;
   line-height: 1;
 }
 
 .modalTitle {
   font-family: 'Bungee', sans-serif;
-  color: #d4657a;
+  color: #f43f5e;
   text-align: center;
   font-size: 1.5rem;
   margin: 0 0 1.5rem;
@@ -604,7 +614,7 @@
 .formGroup label {
   font-family: 'Fredoka One', cursive;
   font-size: 0.9rem;
-  color: #7c3d5c;
+  color: #f43f5e;
 }
 
 .formGroup input,
@@ -612,7 +622,7 @@
 .formGroup textarea {
   padding: 0.85rem 1rem;
   border-radius: 12px;
-  border: 2px solid #f3bfcf;
+  border: 2px solid #fbcfe8;
   background: white;
   font-family: 'Inter', sans-serif;
   font-size: 1rem;
@@ -623,7 +633,7 @@
 .formGroup input:focus,
 .formGroup select:focus,
 .formGroup textarea:focus {
-  border-color: #d4657a;
+  border-color: #f43f5e;
 }
 
 .formGroup textarea {
@@ -632,7 +642,7 @@
 }
 
 .submitBtn {
-  background: linear-gradient(135deg, #a87dbf, #9b6ab0);
+  background: linear-gradient(135deg, #f472b6, #ec4899);
   color: white;
   border: none;
   padding: 1rem;
@@ -640,14 +650,14 @@
   font-family: 'Bungee', sans-serif;
   font-size: 1.1rem;
   cursor: pointer;
-  box-shadow: 0 4px 0 #7c4d9b;
+  box-shadow: 0 4px 0 #be185d;
   transition: transform 0.1s, box-shadow 0.1s;
   margin-top: 0.5rem;
 }
 
 .submitBtn:active {
   transform: translateY(3px);
-  box-shadow: 0 1px 0 #7c4d9b;
+  box-shadow: 0 1px 0 #be185d;
 }
 
 .submitBtn:disabled {
