@@ -244,9 +244,20 @@ export default function InvitacionPage() {
       {/* ── Garland ── */}
       <div className={styles.garland} aria-hidden>
         {['#d4657a', '#a87dbf', '#ff8c00', '#f9a8d4', '#d4657a', '#a87dbf', '#ff8c00', '#f9a8d4', '#d4657a', '#a87dbf'].map((c, i) => (
-          <div key={i} className={styles.flag} style={{ background: c, transform: `rotate(${i % 2 === 0 ? -8 : 8}deg)` }} />
+          <div
+            key={i}
+            className={styles.flag}
+            style={{
+              background: c,
+              // Le damos un retraso distinto a cada banderín para que parezca una ola de viento real
+              animationDelay: `${i * 0.15}s`
+            }}
+          />
         ))}
       </div>
+
+
+
 
       {/* ── Hero ── */}
       <header className={styles.hero}>
