@@ -28,7 +28,7 @@ import styles from './invitation.module.css';
 /* ── Components ────────────────────────────────────────────────────────────── */
 
 function RSVPModal({ isOpen, onClose, scriptUrl }: { isOpen: boolean, onClose: () => void, scriptUrl: string }) {
-  const [formData, setFormData] = useState({ name: '', idNumber: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', message: '' });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
   if (!isOpen) return null;
@@ -52,7 +52,7 @@ function RSVPModal({ isOpen, onClose, scriptUrl }: { isOpen: boolean, onClose: (
       setTimeout(() => {
         onClose();
         setStatus('idle');
-        setFormData({ name: '', idNumber: '', message: '' });
+        setFormData({ name: '', message: '' });
       }, 2500);
     } catch (error) {
       setStatus('error');
@@ -78,13 +78,6 @@ function RSVPModal({ isOpen, onClose, scriptUrl }: { isOpen: boolean, onClose: (
                 <input
                   type="text" required placeholder="Ej: Juan Pérez"
                   value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })}
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <label>Número de Cédula</label>
-                <input
-                  type="text" required placeholder="Ej: 12.345.678"
-                  value={formData.idNumber} onChange={e => setFormData({ ...formData, idNumber: e.target.value })}
                 />
               </div>
               <div className={styles.formGroup}>
